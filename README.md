@@ -46,7 +46,7 @@ Bu proje, bir seçimde farklı adaylar için oyları saymak ve takip etmek amac�
 
 #### Kullanım
 
-1. Depoyu klonlayın veya kaynak kodunu indirin.
+1. Repoyu klonlayın veya kaynak kodunu indirin.
 2. `index.html` dosyasını bir web tarayıcısında açın.
 3. Her aday için oy sayısını artırmak veya azaltmak için artı (+) ve eksi (-) düğmelerini kullanın.
 4. Toplam oy sayısı otomatik olarak güncellenecektir.
