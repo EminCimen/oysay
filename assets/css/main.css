@@ -115,4 +115,7 @@ body {
     justify-content: center;
     text-align: center;
     margin: auto;
+    width:200px;
+    height:50px;
+    font-size: 1em;
 }
