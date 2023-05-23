@@ -3,8 +3,14 @@ var counter1 = document.getElementById("counter-1");
 var counter2 = document.getElementById("counter-2");
 var counter3 = document.getElementById("counter-3");
 var counterTotal = document.getElementById("counter-total");
+var sandikNumarasi = document.getElementById("sandik-numarasi")
 
 // Set up the event listeners
+document.getElementById("sandik-numarasi").addEventListener("focusout", function () {
+    localStorage.setItem("sandik-numarasi", sandikNumarasi.value);
+});
+
+
 document.getElementById("counter-1-plus").addEventListener("click", function () {
     counter1.value++;
     localStorage.setItem("counter-1", counter1.value);
@@ -52,6 +58,7 @@ var counter1Value = localStorage.getItem("counter-1");
 var counter2Value = localStorage.getItem("counter-2");
 var counter3Value = localStorage.getItem("counter-3");
 var counterTotalValue = localStorage.getItem("total");
+var sandikNumarasiValue = localStorage.getItem("sandik-numarasi");
 
 // Set the counters to the values from local storage
 if (counter1Value) {
@@ -68,6 +75,10 @@ if (counter3Value) {
 
 if (counterTotalValue) {
     counterTotal.value = counterTotalValue;
+}
+
+if (sandikNumarasiValue) {
+    sandikNumarasi.value = sandikNumarasiValue;
 }
 
 // Function to update the total counter
@@ -93,6 +104,7 @@ function confirmAction() {
     counter2.value = 0;
     counter3.value = 0;
     counterTotal.value = 0;
+    sandikNumarasi.value = null;
     localStorage.clear();
 }
 
