@@ -107,7 +107,7 @@ input[type="number"] {
 }
 
 body {
-    touch-action: none;
+    touch-action: pan-x;
 }
 
 .sandik-numarasi-input {
