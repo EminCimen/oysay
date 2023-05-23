@@ -1,0 +1,57 @@
+.btn-xl-counter {
+    padding: 10px 20px;
+    font-size: 30px!important;
+    border-radius: 10px;
+    width:20%;
+    text-align: center;
+    justify-content: center;
+}
+
+.btn-xl {
+    padding: 10px 20px;
+    font-size: 30px;
+    border-radius: 10px;
+    width:30%;
+    text-align: center;
+    justify-content: center;
+}
+
+.card img {
+    display: block;
+    margin: 0 auto;
+}
+
+.card-body {
+    text-align: center;
+    justify-content: center;
+}
+
+input[type="number"] {
+    text-align: center;
+    font-size: 50px;
+    width: 200px;
+}
+
+#reset-button {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    width:30%;
+    margin: 0 auto;
+    display: block;
+}
+.oysay {
+    display: contents;
+}
+.oysay button {
+    width:150px;
+}
+.col img {
+    margin-bottom:10px;
+}
+div .align-items-center, #counter-total  {
+    display: inline-flex;
+}
+.card-body {
+    background-color: #e0e0e0;
+}

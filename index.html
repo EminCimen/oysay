@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Oy Say - 28 Mayıs</title>
+    <link href="assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container">
+    <button class="btn btn-danger btn-xl" id="reset-button" style="text-align: center; justify-content: center;">Tüm
+        Oyları Sıfırla
+    </button>
+    <br>
+    <div class="card mx-auto">
+        <div class="card-body text-center justify-content-center">
+            <h2 class="card-title">Sandık Toplam Oylar</h2>
+            <input type="number" class="form-control" id="counter-total" value="0" min="0" max="30" text-align="center"
+                   disabled>
+        </div>
+    </div>
+    <br>
+    <div class="card mx-auto">
+
+        <div class="card-body text-center justify-content-center">
+            <h2 class="card-title">Recep Tayyip Erdoğan</h2>
+            <div class="col">
+                <img src="assets/images/rte.jpeg"
+                     alt="Recep Tayyip Erdoğan" width="200" height="200">
+            </div>
+            <div class="row align-items-center">
+                <div class="col oysay">
+                    <button class="btn btn-danger btn-xl-counter" id="counter-1-minus">-</button>
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" id="counter-1" value="0" min="0" max="10"
+                           text-align="center">
+                </div>
+                <div class="col oysay">
+                    <button class="btn btn-primary btn-xl-counter" id="counter-1-plus">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center justify-content-center">
+        </div>
+
+    </div>
+    <div class="card mx-auto">
+        <div class="card-body text-center justify-content-center">
+            <h2 class="card-title">Kemal Kılıçdaroğlu</h2>
+            <div class="col">
+                <img src="assets/images/kk.jpeg"
+                     alt="Kemal Kılıçdaroğlu" width="200" height="200">
+            </div>
+            <div class="row align-items-center">
+                <div class="col oysay">
+                    <button class="btn btn-danger btn-xl-counter" id="counter-2-minus">-</button>
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" id="counter-2" value="0" min="0" max="10"
+                           text-align="center">
+                </div>
+                <div class="col oysay">
+                    <button class="btn btn-primary btn-xl-counter" id="counter-2-plus">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center justify-content-center">
+        </div>
+    </div>
+
+    <div class="card mx-auto">
+        <div class="card-body text-center justify-content-center">
+            <h2 class="card-title">Geçersiz Oy</h2>
+            <div class="row align-items-center">
+                <div class="col oysay">
+                    <button class="btn btn-danger btn-xl-counter" id="counter-3-minus">-</button>
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" id="counter-3" value="0" min="0" max="10"
+                           text-align="center">
+                </div>
+                <div class="col oysay">
+                    <button class="btn btn-primary btn-xl-counter" id="counter-3-plus">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center justify-content-center">
+        </div>
+    </div>
+
+
+</div>
+<script src="assets/js/main.js"></script>
