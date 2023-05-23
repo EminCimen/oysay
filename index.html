@@ -6,6 +6,7 @@
     <meta property="og:image" content="assets/images/preview.png" />
     <link href="assets/css/main.css" rel="stylesheet" type="text/css">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/custom.modal.css" rel="stylesheet" type="text/css">
     <link rel="icon" type="image/png" href="assets/images/favicon.png" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PDJRS7LPBK"></script>
@@ -70,12 +71,24 @@
             <h2 class="totatl-count-title">Sandık Toplam Oylar</h2>
             <input type="number" id="counter-total" value="0" min="0" max="30" disabled>
         </div>
+        <br />
         <div>
-            <button id="reset-button" class="btn btn-danger mt-3">Tüm Oyları Sil</button>
+            <button id="reset-button" onclick="showConfirmModal()">Tüm Oyları Sil</button>
         </div>
     </div>
 
 </div>
+
+<div id="confirmModal" class="modal">
+    <div class="modal-content">
+        <p>Oyları sıfırlamak istiyor musunuz? İşlem geri alınamaz.</p>
+        <div class="modal-buttons">
+            <button onclick="confirmAction()">Evet</button>
+            <button onclick="cancelAction()">Hayır</button>
+        </div>
+    </div>
+</div>
+
   
 <script src="assets/js/main.js"></script>
 

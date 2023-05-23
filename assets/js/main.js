@@ -77,14 +77,25 @@ function updateTotalCounter() {
     localStorage.setItem("total", total);
 }
 
-// Add a reset button listener
-document.getElementById("reset-button").addEventListener("click", function () {
-    var answer = window.confirm("Sıfırlamak istiyor musunuz? İşlem geri alınamaz.");
-    if (answer) {
-        counter1.value = 0;
-        counter2.value = 0;
-        counter3.value = 0;
-        counterTotal.value = 0;
-        localStorage.clear();
-    }
-});
+function showConfirmModal() {
+    var modal = document.getElementById('confirmModal');
+    modal.style.display = 'block';
+}
+
+function hideConfirmModal() {
+    var modal = document.getElementById('confirmModal');
+    modal.style.display = 'none';
+}
+
+function confirmAction() {
+    hideConfirmModal();
+    counter1.value = 0;
+    counter2.value = 0;
+    counter3.value = 0;
+    counterTotal.value = 0;
+    localStorage.clear();
+}
+
+function cancelAction() {
+    hideConfirmModal();
+}
