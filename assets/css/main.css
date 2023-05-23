@@ -44,6 +44,21 @@ input[type="number"] {
     margin: 0 auto;
     display: block;
 }
+
+#export-button {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    width:auto;
+    margin: auto;
+    display: flex;
+}
+
+.btn-export {
+    display: flex!important;
+    margin: auto!important;
+}
+
 .oysay {
     display: contents;
 }
@@ -118,4 +133,18 @@ body {
     width:200px;
     height:50px;
     font-size: 1.5em!important;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table td, table th {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
 }
