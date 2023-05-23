@@ -109,3 +109,10 @@ input[type="number"] {
 body {
     touch-action: none;
 }
+
+.sandik-numarasi-input {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
