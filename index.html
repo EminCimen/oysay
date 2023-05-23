@@ -22,19 +22,19 @@
 <div class="container-fluid">
 
     <div class="container-box">
-        <div class=" d-flex justify-content-between">
+        <div class="d-flex justify-content-between">
             <div class="vote-box">
                 <h6 class="text-center fw-bold text-light">Recep Tayyip Erdoğan</h6>
                 <img src="assets/images/rte.jpeg" alt="Recep Tayyip Erdoğan" class="vote-img">
                 <div class="col mt-3">
                     <input type="number" id="counter-1" value="0" min="0" max="10">
                 </div>
-                <div class="d-flex gap-3 mt-3">
-                    <div class="col">
+                <div class="d-flex gap-1 mt-3 col-12 signs">
+                    <div class="col mt-6 col-4">
                         <button class="btn btn-danger w-100" id="counter-1-minus">-</button>
                     </div>
-                    <div class="col">
-                        <button class="btn btn-primary w-100" id="counter-1-plus">+</button>
+                    <div class="col mt-6 col-8">
+                        <button class="btn btn-success w-100" id="counter-1-plus">+</button>
                     </div>
                 </div>
             </div>
@@ -44,12 +44,12 @@
                 <div class="col mt-3">
                     <input type="number" class="form-control" id="counter-2" value="0" min="0" max="10">
                 </div>
-                <div class="d-flex gap-3 mt-3">
-                    <div class="col">
+                <div class="d-flex gap-1 mt-3 col-12 signs">
+                    <div class="col mt-6 col-4">
                         <button class="btn btn-danger w-100" id="counter-2-minus">-</button>
                     </div>
-                    <div class="col">
-                        <button class="btn btn-primary w-100" id="counter-2-plus">+</button>
+                    <div class="col mt-6 col-8">
+                        <button class="btn btn-success w-100" id="counter-2-plus">+</button>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                 <input type="number" id="counter-3" value="0" min="0" max="10">
             </div>
             <div class="col-3 px-2 d-flex flex-row justify-content-center align-items-center">
-                <button class="btn w-100 bg-primary text-light" id="counter-3-plus">+</button>
+                <button class="btn w-100 bg-success text-light" id="counter-3-plus">+</button>
             </div>
         </div>
         <div class="mt-3">
@@ -73,7 +73,7 @@
         </div>
         <br />
         <div>
-            <button id="reset-button" onclick="showConfirmModal()">Tüm Oyları Sil</button>
+            <button id="reset-button" class="btn btn-danger" onclick="showConfirmModal()">Tüm Oyları Sil</button>
         </div>
     </div>
 
