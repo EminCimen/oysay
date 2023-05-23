@@ -6,75 +6,66 @@
     <link href="assets/css/main.css" rel="stylesheet" type="text/css">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body id="dark-theme">
 <div class="container-fluid">
-    <button class="btn btn-danger btn-xl" id="reset-button">Tüm Oyları Sıfırla</button>
-    <br>
-    <div class="card mx-auto">
-        <div class="card-body text-center">
-            <h2 class="card-title">Sandık Toplam Oylar</h2>
-            <input type="number" class="form-control" id="counter-total" value="0" min="0" max="30" disabled>
-        </div>
-    </div>
-    <br>
-    <div class="card mx-auto">
-        <div class="card-body text-center">
-            <h2 class="card-title">Recep Tayyip Erdoğan</h2>
-            <div class="col">
-                <img src="assets/images/rte.jpeg" alt="Recep Tayyip Erdoğan" class="img-fluid">
-            </div>
-            <div class="row align-items-center">
-                <div class="col oysay">
-                    <button class="btn btn-danger btn-xl-counter" id="counter-1-minus">-</button>
+
+    <div class="container-box">
+        <div class=" d-flex justify-content-between">
+            <div class="vote-box">
+                <h6 class="text-center fw-bold text-light">Recep Tayyip Erdoğan</h6>
+                <img src="assets/images/rte.jpeg" alt="Recep Tayyip Erdoğan" class="vote-img">
+                <div class="col mt-3">
+                    <input type="number" id="counter-1" value="0" min="0" max="10">
                 </div>
-                <div class="col">
-                    <input type="number" class="form-control" id="counter-1" value="0" min="0" max="10">
-                </div>
-                <div class="col oysay">
-                    <button class="btn btn-primary btn-xl-counter" id="counter-1-plus">+</button>
+                <div class="d-flex gap-3 mt-3">
+                    <div class="col">
+                        <button class="btn btn-danger w-100" id="counter-1-minus">-</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary w-100" id="counter-1-plus">+</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="card-footer text-center"></div>
-    </div>
-    <div class="card mx-auto">
-        <div class="card-body text-center">
-            <h2 class="card-title">Kemal Kılıçdaroğlu</h2>
-            <div class="col">
-                <img src="assets/images/kk.jpeg" alt="Kemal Kılıçdaroğlu" class="img-fluid">
-            </div>
-            <div class="row align-items-center">
-                <div class="col oysay">
-                    <button class="btn btn-danger btn-xl-counter" id="counter-2-minus">-</button>
-                </div>
-                <div class="col">
+            <div class="vote-box">
+                <h6 class="text-center fw-bold text-light">Kemal Kılıçdaroğlu</h6>
+                <img src="assets/images/kk.jpeg" alt="Kemal Kılıçdaroğlu" class="vote-img">
+                <div class="col mt-3">
                     <input type="number" class="form-control" id="counter-2" value="0" min="0" max="10">
                 </div>
-                <div class="col oysay">
-                    <button class="btn btn-primary btn-xl-counter" id="counter-2-plus">+</button>
+                <div class="d-flex gap-3 mt-3">
+                    <div class="col">
+                        <button class="btn btn-danger w-100" id="counter-2-minus">-</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary w-100" id="counter-2-plus">+</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="card-footer text-center"></div>
-    </div>
-    <div class="card mx-auto">
-        <div class="card-body text-center">
-            <h2 class="card-title">Geçersiz Oy</h2>
-            <div class="row align-items-center">
-                <div class="col oysay">
-                    <button class="btn btn-danger btn-xl-counter" id="counter-3-minus">-</button>
-                </div>
-                <div class="col">
-                    <input type="number" class="form-control" id="counter-3" value="0" min="0" max="10">
-                </div>
-                <div class="col oysay">
-                    <button class="btn btn-primary btn-xl-counter" id="counter-3-plus">+</button>
-                </div>
+
+        <h5 class="mt-3 text-center fw-bold text-light">Geçersiz Oy</h5>
+        <div class="mt-3 d-flex justify-content-between">
+            <div class="col-3 px-2 d-flex flex-row justify-content-center align-items-center">
+                <button class="btn w-100 bg-danger text-light" id="counter-3-minus">-</button>
+            </div>
+            <div class="col-6">
+                <input type="number" id="counter-3" value="0" min="0" max="10">
+            </div>
+            <div class="col-3 px-2 d-flex flex-row justify-content-center align-items-center">
+                <button class="btn w-100 bg-primary text-light" id="counter-3-plus">+</button>
             </div>
         </div>
-        <div class="card-footer text-center"></div>
+        <div class="mt-3">
+            <h2 class="totatl-count-title">Sandık Toplam Oylar</h2>
+            <input type="number" id="counter-total" value="0" min="0" max="30" disabled>
+        </div>
+        <div>
+            <button id="reset-button" class="btn btn-danger mt-3">Tüm Oyları Sil</button>
+        </div>
     </div>
-</div>
+
+    
+  
 <script src="assets/js/main.js"></script>
 
 </body>
