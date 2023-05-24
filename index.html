@@ -24,7 +24,7 @@
     <div class="container-box">
         <div class="mt-3">
             <h2 class="totatl-count-title">Sandık Numarası</h2>
-            <input type="number" class="sandik-numarasi-input" id="sandik-numarasi" min="0" max="30">
+            <input type="number" class="sandik-numarasi-input" id="ballot-box-id" min="0" max="30">
         </div>
         <br />
         <div class="d-flex justify-content-between">
@@ -32,14 +32,14 @@
                 <h6 class="text-center fw-bold text-light">Recep Tayyip Erdoğan</h6>
                 <img src="assets/images/rte.jpeg" alt="Recep Tayyip Erdoğan" class="vote-img">
                 <div class="col mt-3">
-                    <input type="number" id="counter-1" value="0" min="0" max="10" disabled>
+                    <input type="number" id="first-candidate-votes" value="0" min="0" max="10" disabled>
                 </div>
                 <div class="d-flex gap-1 mt-3 col-12 signs">
                     <div class="col mt-6 col-4">
-                        <button class="btn btn-danger w-100" id="counter-1-minus">-</button>
+                        <button class="btn btn-danger w-100" id="first-candidate-votes-minus">-</button>
                     </div>
                     <div class="col mt-6 col-8">
-                        <button class="btn btn-success w-100" id="counter-1-plus">+</button>
+                        <button class="btn btn-success w-100" id="first-candidate-votes-plus">+</button>
                     </div>
                 </div>
             </div>
@@ -47,14 +47,15 @@
                 <h6 class="text-center fw-bold text-light">Kemal Kılıçdaroğlu</h6>
                 <img src="assets/images/kk.jpeg" alt="Kemal Kılıçdaroğlu" class="vote-img">
                 <div class="col mt-3">
-                    <input type="number" class="form-control" id="counter-2" value="0" min="0" max="10" disabled>
+                    <input type="number" id="second-candidate-votes" value="0" min="0" max="10"
+                           disabled>
                 </div>
                 <div class="d-flex gap-1 mt-3 col-12 signs">
                     <div class="col mt-6 col-4">
-                        <button class="btn btn-danger w-100" id="counter-2-minus">-</button>
+                        <button class="btn btn-danger w-100" id="second-candidate-votes-minus">-</button>
                     </div>
                     <div class="col mt-6 col-8">
-                        <button class="btn btn-success w-100" id="counter-2-plus">+</button>
+                        <button class="btn btn-success w-100" id="second-candidate-votes-plus">+</button>
                     </div>
                 </div>
             </div>
@@ -63,33 +64,33 @@
         <h5 class="mt-3 text-center fw-bold text-light">Geçersiz Oy</h5>
         <div class="mt-3 d-flex justify-content-between">
             <div class="col-3 px-2 d-flex flex-row justify-content-center align-items-center">
-                <button class="btn w-100 bg-danger text-light" id="counter-3-minus">-</button>
+                <button class="btn w-100 bg-danger text-light" id="invalid-votes-minus">-</button>
             </div>
             <div class="col-6">
-                <input type="number" id="counter-3" value="0" min="0" max="10" disabled>
+                <input type="number" id="invalid-votes" value="0" min="0" max="10" disabled>
             </div>
             <div class="col-3 px-2 d-flex flex-row justify-content-center align-items-center">
-                <button class="btn w-100 bg-success text-light" id="counter-3-plus">+</button>
+                <button class="btn w-100 bg-success text-light" id="invalid-votes-plus">+</button>
             </div>
         </div>
         <div class="mt-3">
             <h2 class="totatl-count-title">Sandık Toplam Oylar</h2>
-            <input type="number" id="counter-total" value="0" min="0" max="30" disabled>
+            <input type="number" class="total-votes" id="total-votes" value="0" min="0" max="30" disabled>
         </div>
-        <br />
+        <br/>
         <div>
             <!-- Create a hidden canvas element -->
             <button id="reset-button" class="btn btn-danger" onclick="showConfirmModal()">Tüm Oyları Sil</button>
         </div>
         <div class="mt-3">
-            <button id="exportButton" class="btn btn-info btn-export">Kaydet</button>
+            <button id="exportButton" class="btn btn-info btn-export" onclick="exportAsImage()">Kaydet</button>
         </div>
     </div>
 
 </div>
 
 <canvas id="canvas" style="display: none;"></canvas>
-<div id="confirmModal" class="modal">
+<div id="confirm-modal" class="modal">
     <div class="modal-content">
         <p>Oyları sıfırlamak istiyor musunuz? İşlem geri alınamaz.</p>
         <div class="modal-buttons">
@@ -99,61 +100,7 @@
     </div>
 </div>
 
-<script type='text/javascript'>
-    // Get the button and inputs
-    const exportButton = document.getElementById('exportButton');
-
-    // Add a click event listener to the export button
-    exportButton.addEventListener('click', exportAsImage);
-
-    // Function to export the inputs as an image
-    function exportAsImage() {
-        // Create a canvas element
-        const canvas = document.getElementById('canvas');
-        const context = canvas.getContext('2d');
-
-        // Set the canvas dimensions
-        canvas.width = 500;
-        canvas.height = 300;
-
-        // Clear the canvas
-        context.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Draw the inputs as a table on the canvas
-        const tableData = [
-            ['Sandık Numarası:', sandikNumarasi.value],
-            ['R.Tayyip Erdoğan:', counter1.value],
-            ['Kemal Kılıçdaroğlu:', counter2.value],
-            ['Geçersiz Oylar:', counter3.value],
-            ['Toplam Oylar:', counterTotal.value]
-        ];
-
-        const cellWidth = 200;
-        const cellHeight = 50;
-        const startX = 25;
-        const startY = 25;
-
-        context.font = 'bold 20px Arial';
-
-        tableData.forEach((row, rowIndex) => {
-            row.forEach((cell, colIndex) => {
-                const x = startX + colIndex * cellWidth;
-                const y = startY + rowIndex * cellHeight;
-                context.fillText(cell, x, y);
-            });
-        });
-
-        // Export the canvas as an image
-        const image = canvas.toDataURL('image/png');
-
-        // Open the image in a new tab for download
-        const link = document.createElement('a');
-        link.href = image;
-        link.download = 'export.png';
-        link.click();
-    }
-</script>
-  
 <script src="assets/js/main.js"></script>
+
 </body>
 </html>

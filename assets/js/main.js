@@ -1,113 +1,162 @@
 // Initialize the counters
-var counter1 = document.getElementById("counter-1");
-var counter2 = document.getElementById("counter-2");
-var counter3 = document.getElementById("counter-3");
-var counterTotal = document.getElementById("counter-total");
-var sandikNumarasi = document.getElementById("sandik-numarasi")
+var firstCandidateVotes = document.getElementById("first-candidate-votes");
+var secondCandidateVotes = document.getElementById("second-candidate-votes");
+var invalidVotes = document.getElementById("invalid-votes");
+var totalVotes = document.getElementById("total-votes");
+var ballotBoxId = document.getElementById("ballot-box-id");
 
 // Set up the event listeners
-document.getElementById("sandik-numarasi").addEventListener("focusout", function () {
-    localStorage.setItem("sandik-numarasi", sandikNumarasi.value);
+document.getElementById("ballot-box-id").addEventListener("focusout", function () {
+    localStorage.setItem("ballot-box-id", ballotBoxId.value);
 });
 
 
-document.getElementById("counter-1-plus").addEventListener("click", function () {
-    counter1.value++;
-    localStorage.setItem("counter-1", counter1.value);
+document.getElementById("first-candidate-votes-plus").addEventListener("click", function () {
+    firstCandidateVotes.value++;
+    localStorage.setItem("first-candidate-votes", firstCandidateVotes.value);
     updateTotalCounter();
 });
 
-document.getElementById("counter-1-minus").addEventListener("click", function () {
-    if (counter1.value > 0) {
-        counter1.value--;
-        localStorage.setItem("counter-1", counter1.value);
+document.getElementById("first-candidate-votes-minus").addEventListener("click", function () {
+    if (firstCandidateVotes.value > 0) {
+        firstCandidateVotes.value--;
+        localStorage.setItem("first-candidate-votes", firstCandidateVotes.value);
         updateTotalCounter();
     }
 });
 
-document.getElementById("counter-2-plus").addEventListener("click", function () {
-    counter2.value++;
-    localStorage.setItem("counter-2", counter2.value);
+document.getElementById("second-candidate-votes-plus").addEventListener("click", function () {
+    secondCandidateVotes.value++;
+    localStorage.setItem("second-candidate-votes", secondCandidateVotes.value);
     updateTotalCounter();
 });
 
-document.getElementById("counter-2-minus").addEventListener("click", function () {
-    if (counter2.value > 0) {
-        counter2.value--;
-        localStorage.setItem("counter-2", counter2.value);
+document.getElementById("second-candidate-votes-minus").addEventListener("click", function () {
+    if (secondCandidateVotes.value > 0) {
+        secondCandidateVotes.value--;
+        localStorage.setItem("second-candidate-votes", secondCandidateVotes.value);
         updateTotalCounter();
     }
 });
 
-document.getElementById("counter-3-plus").addEventListener("click", function () {
-    counter3.value++;
-    localStorage.setItem("counter-3", counter3.value);
+document.getElementById("invalid-votes-plus").addEventListener("click", function () {
+    invalidVotes.value++;
+    localStorage.setItem("invalid-votes", invalidVotes.value);
     updateTotalCounter();
 });
 
-document.getElementById("counter-3-minus").addEventListener("click", function () {
-    if (counter3.value > 0) {
-        counter3.value--;
-        localStorage.setItem("counter-3", counter3.value);
+document.getElementById("invalid-votes-minus").addEventListener("click", function () {
+    if (invalidVotes.value > 0) {
+        invalidVotes.value--;
+        localStorage.setItem("invalid-votes", invalidVotes.value);
         updateTotalCounter();
     }
 });
 
 // Get the counters from local storage
-var counter1Value = localStorage.getItem("counter-1");
-var counter2Value = localStorage.getItem("counter-2");
-var counter3Value = localStorage.getItem("counter-3");
-var counterTotalValue = localStorage.getItem("total");
-var sandikNumarasiValue = localStorage.getItem("sandik-numarasi");
+var firstCandidateVotesLocalStorageValue = localStorage.getItem("first-candidate-votes");
+var secondCandidateVotesLocalStorateValue = localStorage.getItem("second-candidate-votes");
+var invalidVotesLocalStorageValue = localStorage.getItem("invalid-votes");
+var totalVotesLocalStorageValue = localStorage.getItem("total-votes");
+var ballotBoxIdLocalStorageValue = localStorage.getItem("ballot-box-id");
 
 // Set the counters to the values from local storage
-if (counter1Value) {
-    counter1.value = counter1Value;
+if (firstCandidateVotesLocalStorageValue) {
+    firstCandidateVotes.value = firstCandidateVotesLocalStorageValue;
 }
 
-if (counter2Value) {
-    counter2.value = counter2Value;
+if (secondCandidateVotesLocalStorateValue) {
+    secondCandidateVotes.value = secondCandidateVotesLocalStorateValue;
 }
 
-if (counter3Value) {
-    counter3.value = counter3Value;
+if (invalidVotesLocalStorageValue) {
+    invalidVotes.value = invalidVotesLocalStorageValue;
 }
 
-if (counterTotalValue) {
-    counterTotal.value = counterTotalValue;
+if (totalVotesLocalStorageValue) {
+    totalVotes.value = totalVotesLocalStorageValue;
 }
 
-if (sandikNumarasiValue) {
-    sandikNumarasi.value = sandikNumarasiValue;
+if (ballotBoxIdLocalStorageValue) {
+    ballotBoxId.value = ballotBoxIdLocalStorageValue;
 }
 
 // Function to update the total counter
 function updateTotalCounter() {
-    var total = parseInt(counter1.value) + parseInt(counter2.value) + parseInt(counter3.value);
-    counterTotal.value = total;
-    localStorage.setItem("total", total);
+    var total = parseInt(firstCandidateVotes.value) + parseInt(secondCandidateVotes.value) + parseInt(invalidVotes.value);
+    totalVotes.value = total;
+    localStorage.setItem("total-votes", total);
 }
 
 function showConfirmModal() {
-    var modal = document.getElementById('confirmModal');
+    var modal = document.getElementById('confirm-modal');
     modal.style.display = 'block';
 }
 
 function hideConfirmModal() {
-    var modal = document.getElementById('confirmModal');
+    var modal = document.getElementById('confirm-modal');
     modal.style.display = 'none';
 }
 
 function confirmAction() {
     hideConfirmModal();
-    counter1.value = 0;
-    counter2.value = 0;
-    counter3.value = 0;
-    counterTotal.value = 0;
-    sandikNumarasi.value = null;
+    firstCandidateVotes.value = 0;
+    secondCandidateVotes.value = 0;
+    invalidVotes.value = 0;
+    totalVotes.value = 0;
+    ballotBoxId.value = null;
     localStorage.clear();
 }
 
 function cancelAction() {
     hideConfirmModal();
+}
+
+
+// Function to export the inputs as an image
+function exportAsImage() {
+
+    // Create a canvas element
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    // Set the canvas dimensions
+    canvas.width = 500;
+    canvas.height = 300;
+
+    // Clear the canvas
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw the inputs as a table on the canvas
+    const tableData = [
+        ['Sandık Numarası:', ballotBoxId.value],
+        ['Recep Tayyip Erdoğan:', firstCandidateVotes.value],
+        ['Kemal Kılıçdaroğlu:', secondCandidateVotes.value],
+        ['Geçersiz Oylar:', invalidVotes.value],
+        ['Toplam Oylar:', totalVotes.value]
+    ];
+
+    const cellWidth = 300;
+    const cellHeight = 50;
+    const startX = 25;
+    const startY = 25;
+
+    context.font = 'bold 20px Arial';
+
+    tableData.forEach((row, rowIndex) => {
+        row.forEach((cell, colIndex) => {
+            const x = startX + colIndex * cellWidth;
+            const y = startY + rowIndex * cellHeight;
+            context.fillText(cell, x, y);
+        });
+    });
+
+    // Export the canvas as an image
+    const image = canvas.toDataURL('image/png');
+
+    // Open the image in a new tab for download
+    const link = document.createElement('a');
+    link.href = image;
+    link.download = ballotBoxId.value + "-Nolu-Sandik-Oy-Sayim-Sonucu";
+    link.click();
 }
