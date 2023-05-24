@@ -10,6 +10,7 @@ document.getElementById("ballot-box-id").addEventListener("focusout", function (
     localStorage.setItem("ballot-box-id", ballotBoxId.value);
 });
 
+ballotBoxId.addEventListener("input", validateBallotBoxId)
 
 document.getElementById("first-candidate-votes-plus").addEventListener("click", function () {
     firstCandidateVotes.value++;
@@ -129,6 +130,19 @@ function confirmExport() {
 
 function cancelExport() {
     hideExportModal();
+}
+
+function validateBallotBoxId() {
+    const value = ballotBoxId.value.trim();
+
+    // Check if the value is numeric
+    if (!isNaN(value) && value !== "") {
+        // Value is numeric, update the input element's value
+        ballotBoxId.value = parseInt(value, 10);
+    } else {
+        // Value is non-numeric, clear the input
+        ballotBoxId.value = "";
+    }
 }
 
 // Function to export the inputs as an image
