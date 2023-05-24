@@ -136,11 +136,12 @@ function exportAsImage() {
         ['Toplam Oylar:', totalVotes.value],
     ];
 
-    let hasBallotBoxValue = true;
+    let imageName = "Sandik-Oy-Sayim-Sonucu";
 
     if (ballotBoxId.value == null || ballotBoxId.value === "") {
         tableData.shift();
-        hasBallotBoxValue = false;
+    } else {
+        imageName = ballotBoxId.value + "-Nolu-Sandik-Oy-Sayim-Sonucu";
     }
 
     const cellWidth = 300;
@@ -157,12 +158,6 @@ function exportAsImage() {
             context.fillText(cell, x, y);
         });
     });
-
-    let imageName = "Sandik-Oy-Sayim-Sonucu";
-
-    if (hasBallotBoxValue) {
-        imageName = ballotBoxId.value + "-Nolu-Sandik-Oy-Sayim-Sonucu";
-    }
 
     // Export the canvas as an image
     const image = canvas.toDataURL('image/png');
