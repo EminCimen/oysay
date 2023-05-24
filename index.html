@@ -23,8 +23,8 @@
 
     <div class="container-box">
         <div class="mt-3">
-            <h2 class="totatl-count-title">Sandık Numarası</h2>
-            <input type="number" class="sandik-numarasi-input" id="ballot-box-id" min="0" max="30">
+            <h2 class="total-count-title">Sandık Numarası</h2>
+            <input type="number" id="ballot-box-id" min="0" max="30">
         </div>
         <br />
         <div class="d-flex justify-content-between">
@@ -61,8 +61,8 @@
             </div>
         </div>
 
-        <h5 class="mt-3 text-center fw-bold text-light">Geçersiz Oy</h5>
-        <div class="mt-3 d-flex justify-content-between">
+        <h4 class="mt-3 text-center text-light">Geçersiz Oy</h4>
+        <div class="mt-10 d-flex justify-content-between invalid-div">
             <div class="col-3 px-2 d-flex flex-row justify-content-center align-items-center">
                 <button class="btn w-100 bg-danger text-light" id="invalid-votes-minus">-</button>
             </div>
@@ -74,7 +74,7 @@
             </div>
         </div>
         <div class="mt-3">
-            <h2 class="totatl-count-title">Sandık Toplam Oylar</h2>
+            <h4 class="total-count-title text-light">Sandık Toplam Oylar</h4>
             <input type="number" class="total-votes" id="total-votes" value="0" min="0" max="30" disabled>
         </div>
         <br/>
