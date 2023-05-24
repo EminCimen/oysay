@@ -129,17 +129,17 @@ function exportAsImage() {
 
     // Draw the inputs as a table on the canvas
     const tableData = [
+        ['Sandık Numarası:', ballotBoxId.value],
         ['Recep Tayyip Erdoğan:', firstCandidateVotes.value],
         ['Kemal Kılıçdaroğlu:', secondCandidateVotes.value],
         ['Geçersiz Oylar:', invalidVotes.value],
         ['Toplam Oylar:', totalVotes.value],
-        ['Sandık Numarası:', ballotBoxId.value],
     ];
 
     let hasBallotBoxValue = true;
 
     if (ballotBoxId.value == null || ballotBoxId.value === "") {
-        tableData.pop();
+        tableData.shift();
         hasBallotBoxValue = false;
     }
 
