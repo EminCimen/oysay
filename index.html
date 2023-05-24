@@ -19,6 +19,7 @@
     </script>
 </head>
 <body id="dark-theme">
+
 <div class="container-fluid" id="capture">
 
     <div class="container-box">
@@ -83,19 +84,35 @@
             <button id="reset-button" class="btn btn-danger" onclick="showConfirmModal()">Tüm Oyları Sil</button>
         </div>
         <div class="mt-3">
-            <button id="exportButton" class="btn btn-info btn-export" onclick="exportAsImage()">Kaydet</button>
+            <button id="export-button" class="btn btn-info" onclick="showExportModal()">Kaydet</button>
         </div>
     </div>
 
 </div>
 
-<canvas id="canvas" style="display: none;"></canvas>
 <div id="confirm-modal" class="modal">
     <div class="modal-content">
         <p>Oyları sıfırlamak istiyor musunuz? İşlem geri alınamaz.</p>
         <div class="modal-buttons">
             <button onclick="confirmAction()">Evet</button>
             <button onclick="cancelAction()">Hayır</button>
+        </div>
+    </div>
+</div>
+
+<canvas id="canvas" style="display: none;"></canvas>
+<div id="export-modal" class="modal">
+    <div class="modal-content">
+        <p>iOS kullanıcıları oyları kaydettikten sonra aşağıdaki adımları gerçekleştirerek kaydedilen dosyaya ulaşabilir</p>
+        <ol type="1">
+            <li>Dosyalar Uygulamasını açınız.</li>
+            <li>Ardından indirdiğiniz fotoğrafı seçiniz.</li>
+            <li>Sol aşağıda bulunan ikona tıklayınız.</li>
+            <li>"Görüntüyü Kaydet" butonuna tıklayınız.</li>
+        </ol>
+        <div class="modal-buttons">
+            <button onclick="confirmExport()">Kaydet</button>
+            <button onclick="cancelExport()">İptal</button>
         </div>
     </div>
 </div>

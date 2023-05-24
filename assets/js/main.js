@@ -112,6 +112,24 @@ function cancelAction() {
     hideConfirmModal();
 }
 
+function showExportModal() {
+    var modal = document.getElementById('export-modal');
+    modal.style.display = 'block';
+}
+
+function hideExportModal() {
+    var modal = document.getElementById('export-modal');
+    modal.style.display = 'none';
+}
+
+function confirmExport() {
+    hideExportModal();
+    exportAsImage();
+}
+
+function cancelExport() {
+    hideExportModal();
+}
 
 // Function to export the inputs as an image
 function exportAsImage() {
@@ -134,7 +152,7 @@ function exportAsImage() {
         ['Kemal Kılıçdaroğlu:', secondCandidateVotes.value],
         ['Geçersiz Oylar:', invalidVotes.value],
         ['Toplam Oylar:', totalVotes.value],
-    ];
+        ];
 
     let imageName = "Sandik-Oy-Sayim-Sonucu";
 
