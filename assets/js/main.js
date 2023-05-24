@@ -129,12 +129,19 @@ function exportAsImage() {
 
     // Draw the inputs as a table on the canvas
     const tableData = [
-        ['Sandık Numarası:', ballotBoxId.value],
         ['Recep Tayyip Erdoğan:', firstCandidateVotes.value],
         ['Kemal Kılıçdaroğlu:', secondCandidateVotes.value],
         ['Geçersiz Oylar:', invalidVotes.value],
-        ['Toplam Oylar:', totalVotes.value]
+        ['Toplam Oylar:', totalVotes.value],
+        ['Sandık Numarası:', ballotBoxId.value],
     ];
+
+    let hasBallotBoxValue = true;
+
+    if (ballotBoxId.value == null || ballotBoxId.value === "") {
+        tableData.pop();
+        hasBallotBoxValue = false;
+    }
 
     const cellWidth = 300;
     const cellHeight = 50;
@@ -151,12 +158,18 @@ function exportAsImage() {
         });
     });
 
+    let imageName = "Sandik-Oy-Sayim-Sonucu";
+
+    if (hasBallotBoxValue) {
+        imageName = ballotBoxId.value + "-Nolu-Sandik-Oy-Sayim-Sonucu";
+    }
+
     // Export the canvas as an image
     const image = canvas.toDataURL('image/png');
 
     // Open the image in a new tab for download
     const link = document.createElement('a');
     link.href = image;
-    link.download = ballotBoxId.value + "-Nolu-Sandik-Oy-Sayim-Sonucu";
+    link.download = imageName;
     link.click();
 }
