@@ -145,6 +145,10 @@ function validateBallotBoxId() {
     }
 }
 
+window.onload = () => {
+    ballotBoxId.onpaste = e => e.preventDefault();
+}
+
 function enforceMinMax(el) {
     if (el.value != "") {
         if (parseInt(el.value) < parseInt(el.min)) {
