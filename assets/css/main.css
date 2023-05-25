@@ -172,3 +172,7 @@ table th {
     font-size: 20px;
     width: 100px;
 }
+
+.ballot-div button {
+    margin-top: 53px!important;
+}

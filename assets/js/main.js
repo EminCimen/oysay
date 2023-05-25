@@ -6,7 +6,6 @@ var totalVotes = document.getElementById("total-votes");
 var ballotBoxId = document.getElementById("ballot-box-id");
 var envelopeNumber = document.getElementById("envelope-number");
 var signatureNumber = document.getElementById("signature-number");
-
 // Set up the event listeners
 document.getElementById("ballot-box-id").addEventListener("focusout", function () {
     localStorage.setItem("ballot-box-id", ballotBoxId.value);
@@ -253,10 +252,14 @@ function confirmBallotBoxInfo() {
 }
 
 function closeBallotBoxInfo() {
+    document.getElementById("envelope-number").value = localStorage.getItem("envelope-number");
+    document.getElementById("signature-number").value = localStorage.getItem("signature-number");
     hideBallotBoxInfo();
 }
 
 function deleteBallotBoxInfo() {
+    localStorage.setItem("envelope-number", null);
+    localStorage.setItem("signature-number", null);
     envelopeNumber.value = null;
     signatureNumber.value = null;
 }
