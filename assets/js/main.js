@@ -4,13 +4,17 @@ var secondCandidateVotes = document.getElementById("second-candidate-votes");
 var invalidVotes = document.getElementById("invalid-votes");
 var totalVotes = document.getElementById("total-votes");
 var ballotBoxId = document.getElementById("ballot-box-id");
+var envelopeNumber = document.getElementById("envelope-number");
+var signatureNumber = document.getElementById("signature-number");
 
 // Set up the event listeners
 document.getElementById("ballot-box-id").addEventListener("focusout", function () {
     localStorage.setItem("ballot-box-id", ballotBoxId.value);
 });
 
-ballotBoxId.addEventListener("input", validateBallotBoxId)
+ballotBoxId.addEventListener("input", validateNumberFields);
+envelopeNumber.addEventListener("input", validateNumberFields);
+signatureNumber.addEventListener("input", validateNumberFields);
 
 document.getElementById("first-candidate-votes-plus").addEventListener("click", function () {
     firstCandidateVotes.value++;
@@ -60,6 +64,8 @@ var secondCandidateVotesLocalStorateValue = localStorage.getItem("second-candida
 var invalidVotesLocalStorageValue = localStorage.getItem("invalid-votes");
 var totalVotesLocalStorageValue = localStorage.getItem("total-votes");
 var ballotBoxIdLocalStorageValue = localStorage.getItem("ballot-box-id");
+var envelopeNumberLocalStorageValue = localStorage.getItem("envelope-number");
+var signatureLocalStorageValue = localStorage.getItem("signature-number");
 
 // Set the counters to the values from local storage
 if (firstCandidateVotesLocalStorageValue) {
@@ -80,6 +86,14 @@ if (totalVotesLocalStorageValue) {
 
 if (ballotBoxIdLocalStorageValue) {
     ballotBoxId.value = ballotBoxIdLocalStorageValue;
+}
+
+if (envelopeNumberLocalStorageValue) {
+    envelopeNumber.value = envelopeNumberLocalStorageValue;
+}
+
+if (signatureLocalStorageValue) {
+    signatureNumber.value = signatureLocalStorageValue;
 }
 
 // Function to update the total counter
@@ -106,6 +120,8 @@ function confirmAction() {
     invalidVotes.value = 0;
     totalVotes.value = 0;
     ballotBoxId.value = null;
+    envelopeNumber.value = null;
+    signatureNumber.value = null;
     localStorage.clear();
 }
 
@@ -132,7 +148,7 @@ function cancelExport() {
     hideExportModal();
 }
 
-function validateBallotBoxId() {
+function validateNumberFields() {
     const value = ballotBoxId.value.trim();
 
     // Check if the value is numeric
@@ -147,6 +163,8 @@ function validateBallotBoxId() {
 
 window.onload = () => {
     ballotBoxId.onpaste = e => e.preventDefault();
+    envelopeNumber.onpaste = ev => ev.preventDefault();
+    signatureNumber.onpaste = sn => sn.preventDefault();
 }
 
 function enforceMinMax(el) {
@@ -177,6 +195,8 @@ function exportAsImage() {
     // Draw the inputs as a table on the canvas
     const tableData = [
         ['Sandık Numarası:', ballotBoxId.value],
+        ['Zarf Sayısı:', envelopeNumber.value],
+        ['İmza Sayısı:', signatureNumber.value],
         ['Recep Tayyip Erdoğan:', firstCandidateVotes.value],
         ['Kemal Kılıçdaroğlu:', secondCandidateVotes.value],
         ['Geçersiz Oylar:', invalidVotes.value],
@@ -214,4 +234,29 @@ function exportAsImage() {
     link.href = image;
     link.download = imageName;
     link.click();
+}
+
+function showBallotBoxInfo() {
+    var modal = document.getElementById('ballot-box-info-modal');
+    modal.style.display = 'block';
+}
+
+function hideBallotBoxInfo() {
+    var modal = document.getElementById('ballot-box-info-modal');
+    modal.style.display = 'none';
+}
+
+function confirmBallotBoxInfo() {
+    localStorage.setItem("envelope-number", envelopeNumber.value);
+    localStorage.setItem("signature-number", signatureNumber.value);
+    hideBallotBoxInfo();
+}
+
+function closeBallotBoxInfo() {
+    hideBallotBoxInfo();
+}
+
+function deleteBallotBoxInfo() {
+    envelopeNumber.value = null;
+    signatureNumber.value = null;
 }
