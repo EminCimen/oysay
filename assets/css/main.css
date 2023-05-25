@@ -31,7 +31,11 @@
     justify-content: center;
 }
 
-input[type="number"] {
+#ballot-box-id,
+#first-candidate-votes,
+#second-candidate-votes,
+#invalid-votes,
+#total-votes {
     text-align: center;
     font-size: 50px;
     width: 200px;
@@ -160,4 +164,11 @@ table th {
 
 .mt-10 {
     margin-top: 10px;
+}
+
+#envelope-number
+#signature-number {
+    text-align: center;
+    font-size: 20px;
+    width: 100px;
 }

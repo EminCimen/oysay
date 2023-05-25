@@ -32,9 +32,16 @@
 <div class="container-fluid" id="capture">
 
     <div class="container-box">
-        <div class="mt-3">
-            <h2 class="total-count-title">Sandık Numarası</h2>
-            <input type="number" id="ballot-box-id" min="0" max="9999999" onkeyup=enforceMinMax(this)>
+        <div class="d-flex justify-content-between">
+            <div class="mt-3 center-block">
+                <h2 class="total-count-title">Sandık Numarası</h2>
+                <input type="number" id="ballot-box-id" min="0" max="9999999" onkeyup=enforceMinMax(this)>
+            </div>
+            <div class="mt-3 center-block">
+                <button id="ballot-box-info-button" class="btn btn-info" onclick="showBallotBoxInfo()">Sandık
+                    Detayları
+                </button>
+            </div>
         </div>
         <br />
         <div class="d-flex justify-content-between">
@@ -122,6 +129,27 @@
         <div class="modal-buttons">
             <button onclick="confirmExport()">Kaydet</button>
             <button onclick="cancelExport()">İptal</button>
+        </div>
+    </div>
+</div>
+
+<div id="ballot-box-info-modal" class="modal">
+    <div class="modal-content">
+        <h2>Lütfen sandık bilgilerinizi girin.</h2>
+         <div class="d-flex justify-content-between">
+            <div class="center-block">
+                <p>Zarf Sayısı</p>
+                <input type="number" id="envelope-number" min="0" max="9999999" onkeyup=enforceMinMax(this)>
+            </div>
+            <div class="center-block">
+                <p>İmza Sayısı</p>
+                <input type="number" id="signature-number" min="0" max="9999999" onkeyup=enforceMinMax(this)>
+            </div>
+        </div>
+        <div class="modal-buttons">
+            <button onclick="confirmBallotBoxInfo()">Kaydet</button>
+            <button onclick="deleteBallotBoxInfo()">Temizle</button>
+            <button onclick="closeBallotBoxInfo()">Kapat</button>
         </div>
     </div>
 </div>
