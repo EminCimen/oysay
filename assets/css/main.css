@@ -166,7 +166,7 @@ table th {
     margin-top: 10px;
 }
 
-#envelope-number
+#envelope-number,
 #signature-number {
     text-align: center;
     font-size: 20px;
@@ -175,4 +175,29 @@ table th {
 
 .ballot-div button {
     margin-top: 53px!important;
+}
+
+.ballot-signature-validation {
+    display: none;
+    text-align: center;
+}
+
+.ballot-signature-validation span {
+    font-size: 15px!important;
+    font-weight: bold;
+    color: yellow;
+}
+
+.validation {
+    text-align: center;
+}
+
+.envelope-signature-validation {
+    display: none;
+}
+
+.envelope-signature-validation span {
+    font-size: 15px!important;
+    font-weight: bold;
+    color: yellow;
 }

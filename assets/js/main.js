@@ -100,6 +100,7 @@ function updateTotalCounter() {
     var total = parseInt(firstCandidateVotes.value) + parseInt(secondCandidateVotes.value) + parseInt(invalidVotes.value);
     totalVotes.value = total;
     localStorage.setItem("total-votes", total);
+    validation();
 }
 
 function showConfirmModal() {
@@ -119,8 +120,9 @@ function confirmAction() {
     invalidVotes.value = 0;
     totalVotes.value = 0;
     ballotBoxId.value = null;
-    envelopeNumber.value = null;
-    signatureNumber.value = null;
+    envelopeNumber.value = 0;
+    signatureNumber.value = 0;
+    validation();
     localStorage.clear();
 }
 
@@ -246,8 +248,11 @@ function hideBallotBoxInfo() {
 }
 
 function confirmBallotBoxInfo() {
+    envelopeNumber = document.getElementById("envelope-number");
+    signatureNumber = document.getElementById("signature-number");
     localStorage.setItem("envelope-number", envelopeNumber.value);
     localStorage.setItem("signature-number", signatureNumber.value);
+    validation();
     hideBallotBoxInfo();
 }
 
@@ -258,8 +263,36 @@ function closeBallotBoxInfo() {
 }
 
 function deleteBallotBoxInfo() {
-    localStorage.setItem("envelope-number", null);
-    localStorage.setItem("signature-number", null);
-    envelopeNumber.value = null;
-    signatureNumber.value = null;
+    localStorage.setItem("envelope-number", 0);
+    localStorage.setItem("signature-number", 0);
+    envelopeNumber.value = 0;
+    signatureNumber.value = 0;
+    validation();
+}
+
+function validation() {
+    validateBallotSignatureNumbers();
+    validateEnvelopeSignatureNumbers();
+}
+
+function validateBallotSignatureNumbers() {
+    var ballotSignatureValidationWarning = document.getElementById("ballot-signature-validation");
+    if (signatureNumber.value !== 0) {
+        if (totalVotes.value > signatureNumber.value) {
+            ballotSignatureValidationWarning.style.display = 'block';
+        } else
+            ballotSignatureValidationWarning.style.display = 'none';
+    } else
+        ballotSignatureValidationWarning.style.display = 'none';
+}
+
+function validateEnvelopeSignatureNumbers() {
+    var envelopeSignatureValidationWarning = document.getElementById("envelope-signature-validation");
+    if (envelopeNumber.value !== 0 || signatureNumber.value !== 0) {
+        if (envelopeNumber.value !== signatureNumber.value) {
+            envelopeSignatureValidationWarning.style.display = 'block';
+        } else
+            envelopeSignatureValidationWarning.style.display = 'none';
+    } else
+        envelopeSignatureValidationWarning.style.display = 'none';
 }
