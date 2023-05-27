@@ -278,7 +278,7 @@ function validation() {
 function validateBallotSignatureNumbers() {
     var ballotSignatureValidationWarning = document.getElementById("ballot-signature-validation");
     if (signatureNumber.value !== 0) {
-        if (totalVotes.value > signatureNumber.value) {
+        if (parseInt(totalVotes.value) > parseInt(signatureNumber.value)) {
             ballotSignatureValidationWarning.style.display = 'block';
         } else
             ballotSignatureValidationWarning.style.display = 'none';
